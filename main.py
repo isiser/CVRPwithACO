@@ -27,8 +27,8 @@ def main():
         data.numberOfAnts, data.distanceMatrix, data.pheromoneMatrix,
         data.alpha, data.beta, data.rho, data.depot, data.demands, data.vehicleCapacities)
 
-    i = 1
-    while(i <= 10):
+    i = 0
+    while(i < 5):
         print("****************************************************")
         print("************* ITERACIJA " +
               str(i) + " **************************")

@@ -8,17 +8,18 @@ class Ant:
         self.n = n  # broj gradova
         self.tour_length = -1  # duljina ture
         # memorija (djelomican/konacan put mrava)
-        self.tour = np.full(n + 1, -1)
+        self.tour = []
         # posjeceni gradovi (u pocetku sve False)
         self.visited = np.full(n, False)
+        # napunjenost mrava
+        self.antLoad = 0
 
     def emptyAntMemory(self):
         for i in range(self.n):
             self.visited[i] = False
-        for j in range(self.numberOfVehicles):
-            self.usedVehicles[j] = False
+        self.tour.clear()
         self.antLoad = 0
 
-    def placeAntInDepot(self, step, depot):
-        self.tour[step] = depot
+    def placeAntInDepot(self, depot):
+        self.tour.insert(depot)
         self.visited[depot] = True
