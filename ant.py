@@ -1,10 +1,11 @@
 import numpy as np
 import random
+from vehicle import *
 
 
 class Ant:
 
-    def __init__(self, n):
+    def __init__(self, n, vehicleCapacities, numberOfVehicles):
         self.n = n  # broj gradova
         self.tour_length = -1  # duljina ture
         # memorija (djelomican/konacan put mrava)
@@ -13,6 +14,13 @@ class Ant:
         self.visited = np.full(n, False)
         # napunjenost mrava
         self.antLoad = 0
+        # kreiranje liste vozila
+        self.vehicle = [Vehicle(vehicleCapacities[i])
+                        for i in range(numberOfVehicles)]
+        # Postaviti prvo vozilo za korištenje
+        self.vehicleInUse = self.vehicle[0]
+        self.vehicleInUse.usedVehicle = True
+        self.vehicleInUse.vehicleTour.append(0)
 
     def emptyAntMemory(self):
         for i in range(self.n):
